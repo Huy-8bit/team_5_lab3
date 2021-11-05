@@ -310,7 +310,7 @@ void flash_Sort(vector<int>& arr) {
             j--;
         }
     }
-   
+
 }
 
 void time_sort(vector<int>& arr) {
@@ -326,7 +326,7 @@ void time_sort(vector<int>& arr) {
     // shaker_Sort(arr);
     // shell_Sort(arr);
     // counting_Sort(arr);
-    //flash_Sort(arr);
+    // flash_Sort(arr); // dont run this function
     end = clock();
     double duration = (double)(end - start);
     cout << "duration: " << duration << " seconds" << endl;
@@ -337,5 +337,5 @@ void control_functions(vector<int>& arr) {
     arr = input_Array("array.txt");
     write_Array(arr, "array.txt");
     time_sort(arr);
-     write_Array(arr, "array_sort.txt");
+    write_Array(arr, "array_sort.txt");
 }
