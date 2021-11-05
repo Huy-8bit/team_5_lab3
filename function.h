@@ -19,4 +19,10 @@ void control_functions(vector<int>& arr);
 void insertion_Sort(vector<int>& arr);
 void bubble_Sort(vector<int>& arr);
 void radix_Sort(vector<int>& arr);
+void shaker_Sort(vector<int>& arr);
+void shell_Sort(vector<int>& arr);
 void time_sort(vector<int>& arr);
+void counting_Sort(vector<int>& arr);
+void flash_Sort(vector<int>& arr);
+
+

@@ -211,16 +211,122 @@ void radix_Sort(vector<int>& arr) {
     }
 }
 
+
+// shaker sort for array
+void shaker_Sort(vector<int>& arr) {
+    int n = arr.size();
+    int Left = 0;
+    int Right = n - 1;
+    int k = 0;
+    while (Left < Right)
+    {
+        for (int i = Left; i < Right; i++)
+        {
+            if (arr[i] > arr[i + 1])
+            {
+                swap(arr[i], arr[i + 1]);
+                k = i;
+            }
+        }
+        Right = k;
+        for (int i = Right; i > Left; i--)
+        {
+            if (arr[i] < arr[i - 1])
+            {
+                swap(arr[i], arr[i - 1]);
+                k = i;
+            }
+        }
+        Left = k;
+    }
+}
+// Shell Sort for array 
+void shell_Sort(vector<int>& arr) {
+    int n = arr.size();
+    int gap = n / 2;
+    while (gap > 0) {
+        for (int i = 0; i < n - gap; i++) {
+            int j = i + gap;
+            int temp = arr[j];
+            while (j >= gap && arr[j - gap] > temp) {
+                arr[j] = arr[j - gap];
+                j = j - gap;
+            }
+            arr[j] = temp;
+        }
+        gap = gap / 2;
+    }
+}
+// counting Sort for array
+void counting_Sort(vector<int>& arr) {
+    int n = arr.size();
+    int max = arr[0];
+    for (int i = 1; i < n; i++) {
+        if (arr[i] > max)
+            max = arr[i];
+    }
+    vector<int> count(max + 1);
+    for (int i = 0; i < n; i++)
+        count[arr[i]]++;
+    for (int i = 1; i < max + 1; i++)
+        count[i] += count[i - 1];
+    vector<int> output(n);
+    for (int i = n - 1; i >= 0; i--) {
+        output[count[arr[i]] - 1] = arr[i];
+        count[arr[i]]--;
+    }
+    for (int i = 0; i < n; i++) {
+        arr[i] = output[i];
+    }
+    arr = output;
+}
+
+// flash sort for array
+void flash_Sort(vector<int>& arr) {
+    int n = arr.size();
+    int i = 0;
+    int j = n - 1;
+    while (i < j) {
+        while (arr[i] % 2 == 0 && i < j)
+            i++;
+        while (arr[j] % 2 == 1 && i < j)
+            j--;
+        if (i < j) {
+            swap(arr[i], arr[j]);
+            i++;
+            j--;
+        }
+    }
+    i = 0;
+    j = n - 1;
+    while (i < j) {
+        while (arr[i] % 2 == 1 && i < j)
+            i++;
+        while (arr[j] % 2 == 0 && i < j)
+            j--;
+        if (i < j) {
+            swap(arr[i], arr[j]);
+            i++;
+            j--;
+        }
+    }
+   
+}
+
 void time_sort(vector<int>& arr) {
     clock_t start, end;
     start = clock();
     // quickSort(arr, 0, arr.size() - 1);
     // heapSort(arr);
-    selections_Sort(arr);
+    //selections_Sort(arr);
     // merge_sort(arr, 0, arr.size() - 1);
     // insertion_Sort(arr);
     // bubble_Sort(arr);
     // radix_Sort(arr);  // dont run this function
+    // shaker_Sort(arr);
+    // shell_Sort(arr);
+    // counting_Sort(arr);
+    //flash_Sort(arr);
     end = clock();
     double duration = (double)(end - start);
     cout << "duration: " << duration << " seconds" << endl;
@@ -231,5 +337,5 @@ void control_functions(vector<int>& arr) {
     arr = input_Array("array.txt");
     write_Array(arr, "array.txt");
     time_sort(arr);
-    write_Array(arr, "array_sort.txt");
+     write_Array(arr, "array_sort.txt");
 }
