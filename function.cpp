@@ -189,24 +189,39 @@ void bubble_Sort(vector<int>& arr) {
 }
 
 // radix sort for array
-
-void radix_Sort(vector<int>& arr) {
+void radix_Sort(vector<int>& arr)
+{
     int n = arr.size();
-    int m = 0;
-    for (int i = 0; i < n; i++) {
-        if (arr[i] > m)
-            m = arr[i];
+    int mx = arr[0];
+    for (int i = 1; i < n; i++)
+    {
+        if (arr[i] > mx)
+            mx = arr[i];
     }
-    for (int exp = 1; m / exp > 0; exp *= 10) {
-        vector<int> output(n);
-        vector<int> count(10);
-        for (int i = 0; i < n; i++)
+    for (int exp = 1; mx / exp > 0; exp *= 10)
+    {
+        //
+        int output[500005]; // output array
+        int i, count[10] = { 0 };
+
+        // Store count of occurrences in count[]
+        for (i = 0; i < n; i++)
             count[(arr[i] / exp) % 10]++;
-        for (int i = 1; i < 10; i++)
+
+        // Change count[i] so that count[i] now contains actual
+        //  position of this digit in output[]
+        for (i = 1; i < 10; i++)
             count[i] += count[i - 1];
-        for (int i = n - 1; i >= 0; i--)
+
+        // Build the output array
+        for (i = n - 1; i >= 0; i--) {
             output[count[(arr[i] / exp) % 10] - 1] = arr[i];
-        for (int i = 0; i < n; i++)
+            count[(arr[i] / exp) % 10]--;
+        }
+
+        // Copy the output array to arr[], so that arr[] now
+        // contains sorted numbers according to current digit
+        for (i = 0; i < n; i++)
             arr[i] = output[i];
     }
 }
@@ -282,35 +297,75 @@ void counting_Sort(vector<int>& arr) {
 }
 
 // flash sort for array
-void flash_Sort(vector<int>& arr) {
+void flash_Sort(vector<int>& arr)
+{
     int n = arr.size();
-    int i = 0;
-    int j = n - 1;
-    while (i < j) {
-        while (arr[i] % 2 == 0 && i < j)
-            i++;
-        while (arr[j] % 2 == 1 && i < j)
-            j--;
-        if (i < j) {
-            swap(arr[i], arr[j]);
-            i++;
-            j--;
-        }
+    int min = arr[0];
+    int max = 0;
+    int m = int(0.45 * n);
+    int l[500006];
+    for (int i = 0; i < m; i++) l[i] = 0;
+    for (int i = 1; i < n; i++)
+    {
+        if (arr[i] < min)
+            min = arr[i];
+        if (arr[i] > arr[max])
+            max = i;
     }
-    i = 0;
-    j = n - 1;
-    while (i < j) {
-        while (arr[i] % 2 == 1 && i < j)
-            i++;
-        while (arr[j] % 2 == 0 && i < j)
-            j--;
-        if (i < j) {
-            swap(arr[i], arr[j]);
-            i++;
-            j--;
-        }
+    if (arr[max] == min)
+    {
+        return;
     }
+    float c1 = (float)(m - 1) / (arr[max] - min);
+    for (int i = 0; i < n; i++)
+    {
+        int k = int(c1 * (arr[i] - min));
+        ++l[k];
+    }
+    for (int i = 1; i < m; i++)
+        l[i] += l[i - 1];
+    //swap
+    int temp = arr[max];
+    arr[max] = arr[0];
+    arr[0] = temp;
 
+    int nmove = 0;
+    int j = 0;
+    int k = m - 1;
+    int t = 0;
+    int flash;
+    while (nmove < n - 1)
+    {
+        while (j > l[k] - 1)
+        {
+            j++;
+            k = int(c1 * (arr[j] - min));
+        }
+        flash = arr[j];
+        if (k < 0)
+        {
+            break;
+        }
+        while (j != l[k])
+        {
+            k = int(c1 * (flash - min));
+            int hold = arr[t = --l[k]];
+            arr[t] = flash;
+            flash = hold;
+            ++nmove;
+        }
+    }
+    for (int i = 1; i < n; i++)
+    {
+        int k = i - 1;
+        int key = arr[i];
+        while (arr[k] > key && k >= 0)
+        {
+            arr[k + 1] = arr[k];
+            k--;
+        }
+        arr[k + 1] = key;
+    }
 }
 
 void time_sort(vector<int>& arr) {
@@ -322,13 +377,14 @@ void time_sort(vector<int>& arr) {
     // merge_sort(arr, 0, arr.size() - 1);
     // insertion_Sort(arr);
     // bubble_Sort(arr);
-    // radix_Sort(arr);  // dont run this function
-    // shaker_Sort(arr);
-    // shell_Sort(arr);
-    // counting_Sort(arr);
-    // flash_Sort(arr); // dont run this function
+    radix_Sort(arr);  // dont run this function
+   // shaker_Sort(arr);
+   // shell_Sort(arr);
+   // counting_Sort(arr);
+   //flash_Sort(arr); 
+
     end = clock();
-    double duration = (double)(end - start);
+    float duration = (float)(end - start);
     cout << "duration: " << duration << " seconds" << endl;
 }
 
