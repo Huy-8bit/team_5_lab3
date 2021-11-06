@@ -1,1 +1,3 @@
-quick sort have times: 1 seconds
+merge sort have times: 19 seconds
+quick sort have times: 4 seconds
+radix sort have times: 4 seconds

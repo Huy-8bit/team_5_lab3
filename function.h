@@ -26,3 +26,4 @@ void counting_Sort(vector<int>& arr);
 void flash_Sort(vector<int>& arr);
 double sort_with_name(vector<int>& arr, string name);
 void out_sort_times(double& duration, string name);
+void print_data_file();

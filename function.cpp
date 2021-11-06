@@ -62,8 +62,8 @@ vector<int> input_Array(string fileName) {
         }
     }
     if (arr.size() < 1) {
-        for (int i = 0; i < 5000; i++) {
-            arr.push_back(random(0, 10000));
+        for (int i = 0; i < 20000; i++) {
+            arr.push_back(random(0, 50000));
         }
     }
     fs_in.close();
@@ -503,10 +503,23 @@ void time_sort(vector<int>& arr) {
     out_sort_times(duration, name);
 }
 
+// print data file time_sort.txt
+void print_data_file() {
+    fstream fsTime("time_sort.txt", ios::in);
+    string line;
+    while (getline(fsTime, line))
+    {
+        cout << line << endl;
+    }
+}
+
 // control_functions for array
 void control_functions(vector<int>& arr) {
     arr = input_Array("array.txt");
     write_Array(arr, "array.txt");
     time_sort(arr);
     write_Array(arr, "array_sort.txt");
+
+    cout << endl << "print sort time history: " << endl;
+    print_data_file();
 }
