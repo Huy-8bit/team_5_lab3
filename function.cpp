@@ -5,7 +5,7 @@ int random(int min, int max) {
 }
 
 // quick sort for array
-void quickSort(vector<int>& arr, int left, int right) {
+void quick_Sort(vector<int>& arr, int left, int right) {
     int i = left, j = right;
     int tmp;
     int pivot = arr[(left + right) / 2];
@@ -23,9 +23,9 @@ void quickSort(vector<int>& arr, int left, int right) {
         }
     }
     if (left < j)
-        quickSort(arr, left, j);
+        quick_Sort(arr, left, j);
     if (i < right)
-        quickSort(arr, i, right);
+        quick_Sort(arr, i, right);
 }
 // write array to file
 void write_Array(vector<int>& arr, string fileName) {
@@ -89,7 +89,7 @@ void heapify(vector<int>& arr, int n, int i) {
         heapify(arr, n, largest);
     }
 }
-void heapSort(vector<int>& arr) {
+void heap_Sort(vector<int>& arr) {
     int n = arr.size();
     for (int i = n / 2 - 1; i >= 0; i--) {
         heapify(arr, n, i);
@@ -100,7 +100,7 @@ void heapSort(vector<int>& arr) {
     }
 }
 // selections sort
-void selections_Sort(vector<int>& arr) {
+void selection_Sort(vector<int>& arr) {
     int n = arr.size();
     for (int i = 0; i < n - 1; i++) {
         int min = i;
@@ -153,11 +153,11 @@ void merge(vector<int>& arr, int l, int m, int r) {
         k++;
     }
 }
-void merge_sort(vector<int>& arr, int l, int n) {
+void merge_Sort(vector<int>& arr, int l, int n) {
     if (l < n) {
         int m = (l + n) / 2;
-        merge_sort(arr, l, m);
-        merge_sort(arr, m + 1, n);
+        merge_Sort(arr, l, m);
+        merge_Sort(arr, m + 1, n);
         merge(arr, l, m, n);
     }
 }
@@ -316,7 +316,7 @@ void flash_Sort(vector<int>& arr)
     {
         return;
     }
-    float c1 = (float)(m - 1) / (arr[max] - min);
+    double c1 = (double)(m - 1) / (arr[max] - min);
     for (int i = 0; i < n; i++)
     {
         int k = int(c1 * (arr[i] - min));
@@ -368,24 +368,139 @@ void flash_Sort(vector<int>& arr)
     }
 }
 
-void time_sort(vector<int>& arr) {
+// sort witch sort name 
+double sort_with_name(vector<int>& arr, string name)
+{
     clock_t start, end;
-    start = clock();
-    // quickSort(arr, 0, arr.size() - 1);
-    // heapSort(arr);
-    //selections_Sort(arr);
-    // merge_sort(arr, 0, arr.size() - 1);
-    // insertion_Sort(arr);
-    // bubble_Sort(arr);
-    radix_Sort(arr);  // dont run this function
-   // shaker_Sort(arr);
-   // shell_Sort(arr);
-   // counting_Sort(arr);
-   //flash_Sort(arr); 
+    if (name == "bubble") {
+        start = clock();
+        bubble_Sort(arr);
+        end = clock();
+    }
+    else if (name == "insertion") {
+        start = clock();
+        insertion_Sort(arr);
+        end = clock();
+    }
+    else if (name == "selection") {
+        start = clock();
+        selection_Sort(arr);
+        end = clock();
+    }
+    else if (name == "merge") {
+        start = clock();
+        merge_Sort(arr, 0, arr.size() - 1);
+        end = clock();
+    }
+    else if (name == "quick") {
+        start = clock();
+        quick_Sort(arr, 0, arr.size() - 1);
+        end = clock();
+    }
+    else if (name == "heap") {
+        start = clock();
+        heap_Sort(arr);
+        end = clock();
+    }
+    else if (name == "radix") {
+        start = clock();
+        radix_Sort(arr);
+        end = clock();
+    }
+    else if (name == "shaker") {
+        start = clock();
+        shaker_Sort(arr);
+        end = clock();
+    }
+    else if (name == "shell") {
+        start = clock();
+        shell_Sort(arr);
+        end = clock();
+    }
+    else if (name == "counting") {
+        start = clock();
+        counting_Sort(arr);
+        end = clock();
+    }
+    else if (name == "flash") {
+        start = clock();
+        flash_Sort(arr);
+        end = clock();
+    }
 
-    end = clock();
-    float duration = (float)(end - start);
-    cout << "duration: " << duration << " seconds" << endl;
+    double duration = (double)(end - start);
+    return duration;
+
+}
+void out_sort_times(double& duration, string name) {
+    fstream fsTime("time_sort.txt", ios::out | ios::app);
+    fsTime << name << " sort have times: " << duration << " seconds" << endl;
+}
+void time_sort(vector<int>& arr) {
+
+
+    // enter sort name 
+    cout << "Sort name " << endl;
+    cout << "1. quick " << endl;
+    cout << "2. merge " << endl;
+    cout << "3. heap " << endl;
+    cout << "4. counting " << endl;
+    cout << "5. flash " << endl;
+    cout << "6. shaker " << endl;
+    cout << "7. shell " << endl;
+    cout << "8. radix " << endl;
+    cout << "9. bubble " << endl;
+    cout << "10. insertion " << endl;
+    cout << "11. selection " << endl;
+    cout << "12. exit " << endl;
+    cout << "Enter your choice: ";
+    int choice;
+    cin >> choice;
+    string name;
+    switch (choice)
+    {
+    case 1:
+        name = "quick";
+        break;
+    case 2:
+        name = "merge";
+        break;
+    case 3:
+        name = "heap";
+        break;
+    case 4:
+        name = "counting";
+        break;
+    case 5:
+        name = "flash";
+        break;
+    case 6:
+        name = "shaker";
+        break;
+    case 7:
+        name = "shell";
+        break;
+    case 8:
+        name = "radix";
+        break;
+    case 9:
+        name = "bubble";
+        break;
+    case 10:
+        name = "insertion";
+        break;
+    case 11:
+        name = "selection";
+        break;
+    case 12:
+        return;
+    default:
+        cout << "Invalid choice" << endl;
+        return;
+    }
+    double duration = sort_with_name(arr, name);
+    cout << "Times: " << duration << " seconds " << "by " << name << " sort " << endl;
+    out_sort_times(duration, name);
 }
 
 // control_functions for array

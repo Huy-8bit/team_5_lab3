@@ -1,0 +1,1 @@
+quick sort have times: 1 seconds
