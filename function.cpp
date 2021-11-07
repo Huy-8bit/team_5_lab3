@@ -36,7 +36,6 @@ void create_Array(vector<int>& arr, int size) {
         }
     }
 }
-
 // create array 0  to 50000
 void create_Array_0_to_50000(vector<int>& arr, int size) {
     if (size > 0) {
@@ -50,7 +49,6 @@ void create_Array_0_to_50000(vector<int>& arr, int size) {
         }
     }
 }
-
 // create array 50000 to 0
 void create_Array_50000_to_0(vector<int>& arr, int size) {
     if (size > 0) {
@@ -81,7 +79,6 @@ void create_Array_some_number_random(vector<int>& arr, int size) {
         swap(arr[i], arr[j]);
     }
 }
-
 // read array from file
 void input_Array(vector<int>& arr, int data_type, int size) {
     arr.clear();
@@ -101,7 +98,6 @@ void input_Array(vector<int>& arr, int data_type, int size) {
         break;
     }
 }
-
 // quick sort for array
 void quick_Sort(vector<int>& arr, int left, int right) {
     int i = left, j = right;
@@ -125,8 +121,6 @@ void quick_Sort(vector<int>& arr, int left, int right) {
     if (i < right)
         quick_Sort(arr, i, right);
 }
-
-
 // heap sort for array
 void heapify(vector<int>& arr, int n, int i) {
     int largest = i;
@@ -167,7 +161,6 @@ void selection_Sort(vector<int>& arr) {
         swap(arr[min], arr[i]);
     }
 }
-
 // merge sort for array 
 void merge(vector<int>& arr, int l, int m, int r) {
     int i, j, k;
@@ -217,7 +210,6 @@ void merge_Sort(vector<int>& arr, int l, int n) {
         merge(arr, l, m, n);
     }
 }
-
 // insertion sort for array
 void insertion_Sort(vector<int>& arr) {
     int n = arr.size();
@@ -231,7 +223,6 @@ void insertion_Sort(vector<int>& arr) {
         arr[j + 1] = key;
     }
 }
-
 // bubble sort for array
 void bubble_Sort(vector<int>& arr) {
     int n = arr.size();
@@ -243,7 +234,6 @@ void bubble_Sort(vector<int>& arr) {
         }
     }
 }
-
 // radix sort for array
 void radix_Sort(vector<int>& arr)
 {
@@ -281,8 +271,6 @@ void radix_Sort(vector<int>& arr)
             arr[i] = output[i];
     }
 }
-
-
 // shaker sort for array
 void shaker_Sort(vector<int>& arr) {
     int n = arr.size();
@@ -351,7 +339,6 @@ void counting_Sort(vector<int>& arr) {
     }
     arr = output;
 }
-
 // flash sort for array
 void flash_Sort(vector<int>& arr)
 {
@@ -423,7 +410,6 @@ void flash_Sort(vector<int>& arr)
         arr[k + 1] = key;
     }
 }
-
 // sort witch sort name 
 double sort_with_name(vector<int>& arr, string name)
 {
@@ -555,7 +541,6 @@ void time_sort(vector<int>& arr, int choice, int data_type) {
     double duration = sort_with_name(arr, name);
     out_sort_times(duration, name, arr.size(), data_type);
 }
-
 // print data file time_sort.txt
 void print_data_file() {
     fstream fsTime("time_sort.txt", ios::in);
@@ -565,8 +550,6 @@ void print_data_file() {
         cout << line << endl;
     }
 }
-
-
 // control_functions for array
 void control_functions(vector<int>& arr) {
     int choice_1;
