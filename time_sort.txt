@@ -1,3 +1,1 @@
-merge sort have times: 19 seconds
-quick sort have times: 4 seconds
-radix sort have times: 4 seconds
+heap sort have times: 0 seconds

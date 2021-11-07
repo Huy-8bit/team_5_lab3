@@ -3,6 +3,105 @@
 int random(int min, int max) {
     return rand() % (max - min + 1) + min;
 }
+// write array to file
+void write_Array(vector<int>& arr, string fileName) {
+    // delete data of file
+    ofstream fs_delete(fileName);
+    fs_delete.close();
+    // write data to file
+    ofstream fs_out;
+    fs_out.open(fileName);
+    for (int i = 0; i < arr.size(); i++) {
+        fs_out << arr[i] << endl;
+    }
+    fs_out.close();
+}
+// print array to console
+void print_Array(vector<int>& arr) {
+    for (int i = 0; i < arr.size(); i++) {
+        cout << arr[i] << " ";
+    }
+    cout << endl;
+}
+// create array random number
+void create_Array(vector<int> arr, int size) {
+    if (size > 0) {
+        for (int i = 0; i < size; i++) {
+            arr.push_back(random(0, 50000));
+        }
+    }
+    else {
+        for (int i = 0; i < 50000; i++) {
+            arr.push_back(random(0, 50000));
+        }
+    }
+}
+
+// create array 0  to 50000
+void create_Array_0_to_50000(vector<int> arr, int size) {
+    if (size > 0) {
+        for (int i = 0; i < size; i++) {
+            arr.push_back(i);
+        }
+    }
+    else {
+        for (int i = 0; i < 50000; i++) {
+            arr.push_back(i);
+        }
+    }
+}
+
+// create array 50000 to 0
+void create_Array_50000_to_0(vector<int> arr, int size) {
+    if (size > 0) {
+        for (int i = size; i > 0; i--) {
+            arr.push_back(i);
+        }
+    }
+    else {
+        for (int i = 50000; i > 0; i--) {
+            arr.push_back(i);
+        }
+    }
+}
+// create array some number random
+void create_Array_some_number_random(vector<int> arr, int size) {
+    if (size > 0) {
+        for (int i = 0; i < size; i++) {
+            arr.push_back(i);
+        }
+    }
+    else {
+        for (int i = 0; i < 50000; i++) {
+            arr.push_back(i);
+        }
+    }
+    for (int i = 0; i < 100; i++) {
+        int j = random(0, 50000);
+        swap(arr[i], arr[j]);
+    }
+}
+
+// read array from file
+vector<int> input_Array(int data_type, int size) {
+    vector<int> arr;
+    switch (data_type)
+    {
+    case 0:	// ngẫu nhiên
+        create_Array(arr, size);
+        break;
+    case 1:	// có thứ tự
+        create_Array_0_to_50000(arr, size);
+        break;
+    case 2:	// có thứ tự ngược
+        create_Array_50000_to_0(arr, size);
+        break;
+    case 3:	// gần như có thứ tự
+        create_Array_some_number_random(arr, size);
+        break;
+    }
+    return arr;
+}
 
 // quick sort for array
 void quick_Sort(vector<int>& arr, int left, int right) {
@@ -26,48 +125,6 @@ void quick_Sort(vector<int>& arr, int left, int right) {
         quick_Sort(arr, left, j);
     if (i < right)
         quick_Sort(arr, i, right);
-}
-// write array to file
-void write_Array(vector<int>& arr, string fileName) {
-    // delete data of file
-    ofstream fs_delete(fileName);
-    fs_delete.close();
-    // write data to file
-    ofstream fs_out;
-    fs_out.open(fileName);
-    for (int i = 0; i < arr.size(); i++) {
-        fs_out << arr[i] << endl;
-    }
-    fs_out.close();
-}
-// print array to console
-void print_Array(vector<int>& arr) {
-    for (int i = 0; i < arr.size(); i++) {
-        cout << arr[i] << " ";
-    }
-    cout << endl;
-}
-
-// read array from file
-vector<int> input_Array(string fileName) {
-    vector<int> arr;
-    ifstream fs_in;
-    fs_in.open(fileName);
-
-    // check file have data
-    if (fs_in.is_open()) {
-        int tmp;
-        while (fs_in >> tmp) {
-            arr.push_back(tmp);
-        }
-    }
-    if (arr.size() < 1) {
-        for (int i = 0; i < 20000; i++) {
-            arr.push_back(random(0, 50000));
-        }
-    }
-    fs_in.close();
-    return arr;
 }
 
 
@@ -513,9 +570,26 @@ void print_data_file() {
     }
 }
 
+
 // control_functions for array
 void control_functions(vector<int>& arr) {
-    arr = input_Array("array.txt");
+    int choice;
+    cout << "Enter type data of array" << endl;
+    cout << "0. random " << endl;
+    cout << "1. sorted " << endl;
+    cout << "2. reverse " << endl;
+    cout << "3. some number random " << endl;
+    cout << "Enter your choice: ";
+    cin >> choice;
+
+    int size = 0;
+    cout << "Enter size of array" << endl;
+    cout << "If you enter 0 the array have size 50000" << endl;
+    cout << "Enter your choice: ";
+    cin >> size;
+    
+    arr = input_Array(choice, size);
+    cout << endl << endl;
     write_Array(arr, "array.txt");
     time_sort(arr);
     write_Array(arr, "array_sort.txt");

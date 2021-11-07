@@ -12,7 +12,7 @@ void print_Array(vector<int>& arr);
 void heap_Sort(vector<int>& arr);
 void heapify(vector<int>& arr, int n, int i);
 void selection_Sort(vector<int>& arr);
-vector<int> input_Array(string fileName);
+vector<int> input_Array(int data_type);
 void merge(vector<int>& arr, int l, int m, int r);
 void merge_Sort(vector<int>& arr, int l, int n);
 void control_functions(vector<int>& arr);
