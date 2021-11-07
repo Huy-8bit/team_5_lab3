@@ -24,7 +24,7 @@ void print_Array(vector<int>& arr) {
     cout << endl;
 }
 // create array random number
-void create_Array(vector<int> arr, int size) {
+void create_Array(vector<int>& arr, int size) {
     if (size > 0) {
         for (int i = 0; i < size; i++) {
             arr.push_back(random(0, 50000));
@@ -38,7 +38,7 @@ void create_Array(vector<int> arr, int size) {
 }
 
 // create array 0  to 50000
-void create_Array_0_to_50000(vector<int> arr, int size) {
+void create_Array_0_to_50000(vector<int>& arr, int size) {
     if (size > 0) {
         for (int i = 0; i < size; i++) {
             arr.push_back(i);
@@ -52,7 +52,7 @@ void create_Array_0_to_50000(vector<int> arr, int size) {
 }
 
 // create array 50000 to 0
-void create_Array_50000_to_0(vector<int> arr, int size) {
+void create_Array_50000_to_0(vector<int>& arr, int size) {
     if (size > 0) {
         for (int i = size; i > 0; i--) {
             arr.push_back(i);
@@ -65,7 +65,7 @@ void create_Array_50000_to_0(vector<int> arr, int size) {
     }
 }
 // create array some number random
-void create_Array_some_number_random(vector<int> arr, int size) {
+void create_Array_some_number_random(vector<int>& arr, int size) {
     if (size > 0) {
         for (int i = 0; i < size; i++) {
             arr.push_back(i);
@@ -77,14 +77,14 @@ void create_Array_some_number_random(vector<int> arr, int size) {
         }
     }
     for (int i = 0; i < 100; i++) {
-        int j = random(0, 50000);
+        int j = random(0, arr.size() - 1);
         swap(arr[i], arr[j]);
     }
 }
 
 // read array from file
-vector<int> input_Array(int data_type, int size) {
-    vector<int> arr;
+void input_Array(vector<int>& arr, int data_type, int size) {
+    arr.clear();
     switch (data_type)
     {
     case 0:	// ngẫu nhiên
@@ -100,7 +100,6 @@ vector<int> input_Array(int data_type, int size) {
         create_Array_some_number_random(arr, size);
         break;
     }
-    return arr;
 }
 
 // quick sort for array
@@ -489,30 +488,31 @@ double sort_with_name(vector<int>& arr, string name)
     return duration;
 
 }
-void out_sort_times(double& duration, string name) {
+void out_sort_times(double& duration, string name, int size, int data_type) {
     fstream fsTime("time_sort.txt", ios::out | ios::app);
-    fsTime << name << " sort have times: " << duration << " seconds" << endl;
+
+    string data_type_name;
+    if (data_type == 0) {
+        data_type_name = "radom";
+    }
+    else if (data_type == 1) {
+        data_type_name = "sorted";
+    }
+    else if (data_type == 2) {
+        data_type_name = "reverse";
+    }
+    else if (data_type == 3) {
+        data_type_name = "some number radom";
+    }
+
+    fsTime << "sort name: " << name << endl;
+    fsTime << "size: " << size << endl;
+    fsTime << "data type: " << data_type_name << endl;
+    fsTime << "time: " << duration << " seconds " << endl;
+    fsTime << endl;
+    fsTime.close();
 }
-void time_sort(vector<int>& arr) {
-
-
-    // enter sort name 
-    cout << "Sort name " << endl;
-    cout << "1. quick " << endl;
-    cout << "2. merge " << endl;
-    cout << "3. heap " << endl;
-    cout << "4. counting " << endl;
-    cout << "5. flash " << endl;
-    cout << "6. shaker " << endl;
-    cout << "7. shell " << endl;
-    cout << "8. radix " << endl;
-    cout << "9. bubble " << endl;
-    cout << "10. insertion " << endl;
-    cout << "11. selection " << endl;
-    cout << "12. exit " << endl;
-    cout << "Enter your choice: ";
-    int choice;
-    cin >> choice;
+void time_sort(vector<int>& arr, int choice, int data_type) {
     string name;
     switch (choice)
     {
@@ -551,13 +551,9 @@ void time_sort(vector<int>& arr) {
         break;
     case 12:
         return;
-    default:
-        cout << "Invalid choice" << endl;
-        return;
     }
     double duration = sort_with_name(arr, name);
-    cout << "Times: " << duration << " seconds " << "by " << name << " sort " << endl;
-    out_sort_times(duration, name);
+    out_sort_times(duration, name, arr.size(), data_type);
 }
 
 // print data file time_sort.txt
@@ -573,27 +569,74 @@ void print_data_file() {
 
 // control_functions for array
 void control_functions(vector<int>& arr) {
-    int choice;
+    int choice_1;
     cout << "Enter type data of array" << endl;
     cout << "0. random " << endl;
     cout << "1. sorted " << endl;
     cout << "2. reverse " << endl;
     cout << "3. some number random " << endl;
+    cout << "4. ALL " << endl;
     cout << "Enter your choice: ";
-    cin >> choice;
+    cin >> choice_1;
 
     int size = 0;
     cout << "Enter size of array" << endl;
     cout << "If you enter 0 the array have size 50000" << endl;
     cout << "Enter your choice: ";
     cin >> size;
-    
-    arr = input_Array(choice, size);
-    cout << endl << endl;
-    write_Array(arr, "array.txt");
-    time_sort(arr);
-    write_Array(arr, "array_sort.txt");
 
+    int choice_2;
+    // enter sort name 
+    cout << "Sort name " << endl;
+    cout << "1. quick " << endl;
+    cout << "2. merge " << endl;
+    cout << "3. heap " << endl;
+    cout << "4. counting " << endl;
+    cout << "5. flash " << endl;
+    cout << "6. shaker " << endl;
+    cout << "7. shell " << endl;
+    cout << "8. radix " << endl;
+    cout << "9. bubble " << endl;
+    cout << "10. insertion " << endl;
+    cout << "11. selection " << endl;
+    cout << "12. ALL " << endl;
+    cout << "Enter your choice: ";
+    cin >> choice_2;
+
+    if (choice_1 == 4) {
+        for (int i = 0; i < 4; i++) {
+            input_Array(arr, i, size);
+            vector<int> arr_1 = arr;
+            if (choice_2 == 12) {
+                for (int j = 1; j < 12; j++) {
+                    arr = arr_1;
+                    time_sort(arr, j, i);
+                }
+            }
+            else {
+                arr = arr_1;
+                time_sort(arr, choice_2, i);
+            }
+            arr_1.clear();
+        }
+    }
+    else {
+        input_Array(arr, choice_1, size);
+        vector<int> arr_1 = arr;
+        if (choice_2 == 12) {
+
+            for (int i = 1; i < 12; i++) {
+                arr = arr_1;
+                time_sort(arr, i, choice_1);
+            }
+        }
+        else {
+            arr = arr_1;
+            time_sort(arr, choice_2, choice_1);
+        }
+        arr_1.clear();
+    }
+    write_Array(arr, "array_sort.txt");
     cout << endl << "print sort time history: " << endl;
     print_data_file();
 }

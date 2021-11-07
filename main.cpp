@@ -1,6 +1,6 @@
 #include "function.h"
 #include "function.cpp"
-int main(int argc, char** argv) {
+int main() {
     system("cls");
     system("color 0a");
     srand((int)time(NULL));

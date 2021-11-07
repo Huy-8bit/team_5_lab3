@@ -1,1 +1,220 @@
-heap sort have times: 0 seconds
+sort name: quick
+size: 50000
+data type: radom
+time: 11 seconds 
+
+sort name: merge
+size: 50000
+data type: radom
+time: 42 seconds 
+
+sort name: heap
+size: 50000
+data type: radom
+time: 33 seconds 
+
+sort name: counting
+size: 50000
+data type: radom
+time: 6 seconds 
+
+sort name: flash
+size: 50000
+data type: radom
+time: 7 seconds 
+
+sort name: shaker
+size: 50000
+data type: radom
+time: 17287 seconds 
+
+sort name: shell
+size: 50000
+data type: radom
+time: 28 seconds 
+
+sort name: radix
+size: 50000
+data type: radom
+time: 10 seconds 
+
+sort name: bubble
+size: 50000
+data type: radom
+time: 21026 seconds 
+
+sort name: insertion
+size: 50000
+data type: radom
+time: 5237 seconds 
+
+sort name: selection
+size: 50000
+data type: radom
+time: 8787 seconds 
+
+sort name: quick
+size: 50000
+data type: sorted
+time: 4 seconds 
+
+sort name: merge
+size: 50000
+data type: sorted
+time: 37 seconds 
+
+sort name: heap
+size: 50000
+data type: sorted
+time: 28 seconds 
+
+sort name: counting
+size: 50000
+data type: sorted
+time: 3 seconds 
+
+sort name: flash
+size: 50000
+data type: sorted
+time: 5 seconds 
+
+sort name: shaker
+size: 50000
+data type: sorted
+time: 1 seconds 
+
+sort name: shell
+size: 50000
+data type: sorted
+time: 9 seconds 
+
+sort name: radix
+size: 50000
+data type: sorted
+time: 8 seconds 
+
+sort name: bubble
+size: 50000
+data type: sorted
+time: 7835 seconds 
+
+sort name: insertion
+size: 50000
+data type: sorted
+time: 0 seconds 
+
+sort name: selection
+size: 50000
+data type: sorted
+time: 7308 seconds 
+
+sort name: quick
+size: 50000
+data type: reverse
+time: 5 seconds 
+
+sort name: merge
+size: 50000
+data type: reverse
+time: 39 seconds 
+
+sort name: heap
+size: 50000
+data type: reverse
+time: 26 seconds 
+
+sort name: counting
+size: 50000
+data type: reverse
+time: 5 seconds 
+
+sort name: flash
+size: 50000
+data type: reverse
+time: 5 seconds 
+
+sort name: shaker
+size: 50000
+data type: reverse
+time: 25746 seconds 
+
+sort name: shell
+size: 50000
+data type: reverse
+time: 11 seconds 
+
+sort name: radix
+size: 50000
+data type: reverse
+time: 13 seconds 
+
+sort name: bubble
+size: 50000
+data type: reverse
+time: 28509 seconds 
+
+sort name: insertion
+size: 50000
+data type: reverse
+time: 12044 seconds 
+
+sort name: selection
+size: 50000
+data type: reverse
+time: 10590 seconds 
+
+sort name: quick
+size: 50000
+data type: some number radom
+time: 4 seconds 
+
+sort name: merge
+size: 50000
+data type: some number radom
+time: 40 seconds 
+
+sort name: heap
+size: 50000
+data type: some number radom
+time: 28 seconds 
+
+sort name: counting
+size: 50000
+data type: some number radom
+time: 5 seconds 
+
+sort name: flash
+size: 50000
+data type: some number radom
+time: 5 seconds 
+
+sort name: shaker
+size: 50000
+data type: some number radom
+time: 70 seconds 
+
+sort name: shell
+size: 50000
+data type: some number radom
+time: 15 seconds 
+
+sort name: radix
+size: 50000
+data type: some number radom
+time: 10 seconds 
+
+sort name: bubble
+size: 50000
+data type: some number radom
+time: 8395 seconds 
+
+sort name: insertion
+size: 50000
+data type: some number radom
+time: 36 seconds 
+
+sort name: selection
+size: 50000
+data type: some number radom
+time: 7168 seconds 
+
