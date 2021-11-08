@@ -6,52 +6,52 @@ time: 11 seconds
 sort name: merge
 size: 50000
 data type: radom
-time: 42 seconds 
+time: 52 seconds 
 
 sort name: heap
 size: 50000
 data type: radom
-time: 33 seconds 
+time: 35 seconds 
 
 sort name: counting
 size: 50000
 data type: radom
-time: 6 seconds 
+time: 3 seconds 
 
 sort name: flash
 size: 50000
 data type: radom
-time: 7 seconds 
+time: 5 seconds 
 
 sort name: shaker
 size: 50000
 data type: radom
-time: 17287 seconds 
+time: 17969 seconds 
 
 sort name: shell
 size: 50000
 data type: radom
-time: 28 seconds 
+time: 27 seconds 
 
 sort name: radix
 size: 50000
 data type: radom
-time: 10 seconds 
+time: 9 seconds 
 
 sort name: bubble
 size: 50000
 data type: radom
-time: 21026 seconds 
+time: 23313 seconds 
 
 sort name: insertion
 size: 50000
 data type: radom
-time: 5237 seconds 
+time: 6447 seconds 
 
 sort name: selection
 size: 50000
 data type: radom
-time: 8787 seconds 
+time: 9187 seconds 
 
 sort name: quick
 size: 50000
@@ -61,12 +61,12 @@ time: 4 seconds
 sort name: merge
 size: 50000
 data type: sorted
-time: 37 seconds 
+time: 44 seconds 
 
 sort name: heap
 size: 50000
 data type: sorted
-time: 28 seconds 
+time: 26 seconds 
 
 sort name: counting
 size: 50000
@@ -76,7 +76,7 @@ time: 3 seconds
 sort name: flash
 size: 50000
 data type: sorted
-time: 5 seconds 
+time: 3 seconds 
 
 sort name: shaker
 size: 50000
@@ -86,7 +86,7 @@ time: 1 seconds
 sort name: shell
 size: 50000
 data type: sorted
-time: 9 seconds 
+time: 7 seconds 
 
 sort name: radix
 size: 50000
@@ -96,17 +96,17 @@ time: 8 seconds
 sort name: bubble
 size: 50000
 data type: sorted
-time: 7835 seconds 
+time: 7650 seconds 
 
 sort name: insertion
 size: 50000
 data type: sorted
-time: 0 seconds 
+time: 1 seconds 
 
 sort name: selection
 size: 50000
 data type: sorted
-time: 7308 seconds 
+time: 7443 seconds 
 
 sort name: quick
 size: 50000
@@ -116,52 +116,52 @@ time: 5 seconds
 sort name: merge
 size: 50000
 data type: reverse
-time: 39 seconds 
+time: 38 seconds 
 
 sort name: heap
 size: 50000
 data type: reverse
-time: 26 seconds 
+time: 27 seconds 
 
 sort name: counting
 size: 50000
 data type: reverse
-time: 5 seconds 
+time: 3 seconds 
 
 sort name: flash
 size: 50000
 data type: reverse
-time: 5 seconds 
+time: 4 seconds 
 
 sort name: shaker
 size: 50000
 data type: reverse
-time: 25746 seconds 
+time: 26651 seconds 
 
 sort name: shell
 size: 50000
 data type: reverse
-time: 11 seconds 
+time: 15 seconds 
 
 sort name: radix
 size: 50000
 data type: reverse
-time: 13 seconds 
+time: 9 seconds 
 
 sort name: bubble
 size: 50000
 data type: reverse
-time: 28509 seconds 
+time: 27516 seconds 
 
 sort name: insertion
 size: 50000
 data type: reverse
-time: 12044 seconds 
+time: 11286 seconds 
 
 sort name: selection
 size: 50000
 data type: reverse
-time: 10590 seconds 
+time: 8330 seconds 
 
 sort name: quick
 size: 50000
@@ -171,17 +171,17 @@ time: 4 seconds
 sort name: merge
 size: 50000
 data type: some number radom
-time: 40 seconds 
+time: 48 seconds 
 
 sort name: heap
 size: 50000
 data type: some number radom
-time: 28 seconds 
+time: 38 seconds 
 
 sort name: counting
 size: 50000
 data type: some number radom
-time: 5 seconds 
+time: 4 seconds 
 
 sort name: flash
 size: 50000
@@ -191,7 +191,7 @@ time: 5 seconds
 sort name: shaker
 size: 50000
 data type: some number radom
-time: 70 seconds 
+time: 79 seconds 
 
 sort name: shell
 size: 50000
@@ -206,15 +206,15 @@ time: 10 seconds
 sort name: bubble
 size: 50000
 data type: some number radom
-time: 8395 seconds 
+time: 7889 seconds 
 
 sort name: insertion
 size: 50000
 data type: some number radom
-time: 36 seconds 
+time: 33 seconds 
 
 sort name: selection
 size: 50000
 data type: some number radom
-time: 7168 seconds 
+time: 7393 seconds 
 
