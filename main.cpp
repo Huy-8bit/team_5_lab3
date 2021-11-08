@@ -1,5 +1,6 @@
 #include "function.h"
 #include "function.cpp"
+
 int main() {
     system("cls");
     system("color 0a");

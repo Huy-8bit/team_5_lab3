@@ -4,6 +4,7 @@ int random(int min, int max) {
     return rand() % (max - min + 1) + min;
 }
 // write array to file
+
 void write_Array(vector<int>& arr, string fileName) {
     // delete data of file
     ofstream fs_delete(fileName);
@@ -23,6 +24,7 @@ void print_Array(vector<int>& arr) {
     }
     cout << endl;
 }
+
 // create array random number
 void create_Array(vector<int>& arr, int size) {
     if (size > 0) {
@@ -36,6 +38,7 @@ void create_Array(vector<int>& arr, int size) {
         }
     }
 }
+
 // create array 0  to 50000
 void create_Array_0_to_50000(vector<int>& arr, int size) {
     if (size > 0) {
@@ -624,3 +627,5 @@ void control_functions(vector<int>& arr) {
     cout << endl << "print sort time history: " << endl;
     print_data_file();
 }
+
+
